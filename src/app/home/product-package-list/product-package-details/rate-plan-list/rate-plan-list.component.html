@@ -1,0 +1,7 @@
+<div class="d-flex flex-wrap">
+    <ng-container *ngFor="let plan of ratePlans">
+        <app-rate-plan class="plan" [ratePlan]="plan">
+            <button mat-raised-button color="primary" (click)="onRateDetailsClicked(plan.id)">DETAIILS</button>
+        </app-rate-plan>
+    </ng-container>
+</div>

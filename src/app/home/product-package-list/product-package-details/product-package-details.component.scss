@@ -1,0 +1,12 @@
+@media only screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    > * {
+      width: 100%;
+    }
+    .rates {
+      width: 100%;
+    }
+  }
+}

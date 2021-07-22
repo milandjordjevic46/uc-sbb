@@ -1,0 +1,7 @@
+<div class="cards-container">
+    <ng-container *ngFor="let item of data">
+        <app-product-package class="w-25" [productPackage]="item">
+            <button mat-raised-button (click)="onDetailsClicked(item.id)" color="primary">DETAILS</button>
+        </app-product-package>
+    </ng-container>
+</div>

@@ -1,0 +1,19 @@
+.card {
+  margin: 0 10px;
+}
+
+::ng-deep .mat-card-header-text {
+  margin: 0 !important;
+}
+
+::ng-deep .mat-card-content {
+  margin-bottom: 0 !important;
+}
+
+.card-title {
+  font-size: 1.5em;
+}
+
+.price {
+  font-size: 1.5em;
+}

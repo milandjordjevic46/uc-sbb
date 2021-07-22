@@ -1,0 +1,10 @@
+<div class="d-flex container">
+    <div class="w-25">
+        <app-rate-plan *ngIf="data" [ratePlan]="data"></app-rate-plan>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="w-75 rates">
+        <app-billing-products-list *ngIf="data && data.billing_products" [billingProducts]="data.billing_products">
+        </app-billing-products-list>
+    </div>
+</div>

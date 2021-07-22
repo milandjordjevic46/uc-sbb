@@ -1,0 +1,9 @@
+.plan {
+  min-width: 180px;
+}
+
+@media only screen and (max-width: 600px) {
+  .plan {
+    width: 50%;
+  }
+}
