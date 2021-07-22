@@ -1,0 +1,18 @@
+<form [formGroup]="createForm" class="mt4">
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput autocomplete="off" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Code</mat-label>
+        <input matInput autocomplete="off" formControlName="code">
+    </mat-form-field>
+
+    <ng-container *ngIf="data.hasPrice">
+        <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput autocomplete="off" formControlName="price">
+        </mat-form-field>
+    </ng-container>
+</form>

@@ -37,4 +37,10 @@ export class ProductPackageListComponent implements OnInit {
   onDetailsClicked(id: string): void {
     this.productPackageListPresenter.goToDetails(id);
   }
+
+  onAddClicked(): void {
+    this.productPackageListPresenter.addProduct(this.data[0]);
+  }
+
+  onEditClicked(): void {}
 }

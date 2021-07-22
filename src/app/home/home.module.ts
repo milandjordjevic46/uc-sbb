@@ -23,6 +23,9 @@ import { RatePlanComponent } from './product-package-list/product-package-detail
 import { RatePlanDetailsComponent } from './product-package-list/product-package-details/rate-plan-list/rate-plan-details/rate-plan-details.component';
 import { BillingProductsListComponent } from './product-package-list/product-package-details/rate-plan-list/rate-plan-details/billing-products-list/billing-products-list.component';
 import { BillingProductComponent } from './product-package-list/product-package-details/rate-plan-list/rate-plan-details/billing-products-list/billing-product/billing-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MethodsService, MethodsServiceImpl } from './services/methods.service';
+import { CreateComponent } from './create/create.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -35,8 +38,16 @@ import { BillingProductComponent } from './product-package-list/product-package-
     RatePlanDetailsComponent,
     BillingProductsListComponent,
     BillingProductComponent,
+    CreateComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, HttpClientModule, MaterialModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    HttpClientModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     { provide: CloudService, useClass: CloudServiceImpl },
     {
@@ -51,6 +62,10 @@ import { BillingProductComponent } from './product-package-list/product-package-
     {
       provide: ErrorHandlingService,
       useClass: ErrorHandlingServiceImpl,
+    },
+    {
+      provide: MethodsService,
+      useClass: MethodsServiceImpl,
     },
   ],
 })
