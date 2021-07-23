@@ -1,6 +1,13 @@
 <div class="d-flex container">
     <div class="w-25">
-        <app-rate-plan *ngIf="data" [ratePlan]="data"></app-rate-plan>
+        <app-rate-plan *ngIf="data" [ratePlan]="data">
+            <button mat-mini-fab (click)="onDeleteRatePlanClicked(data)" color="accent">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-mini-fab (click)="onEditRatePlanClicked(data)" color="accent">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </app-rate-plan>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="w-75 rates">

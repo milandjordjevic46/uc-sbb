@@ -31,4 +31,29 @@ export class RatePlanListComponent implements OnInit {
         this.ratePlans.push(response);
       });
   }
+
+  onEditRatePlanClicked(ratePlan: RatePlan): void {
+    this.ratePlanListPresenter
+      .onEditRatePlan(['name', 'code'], ratePlan)
+      .subscribe((response) => {
+        this.ratePlans = this.ratePlans.map((ratePlan) => {
+          if (ratePlan.id == response.id) {
+            return response;
+          } else {
+            return ratePlan;
+          }
+        });
+      });
+  }
+
+  onDeleteRatePlanClicked(ratePlan: RatePlan): void {
+    this.ratePlanListPresenter
+      .onDeleteRatePlan(ratePlan)
+      .subscribe((response) => {
+        const foundIndex = this.ratePlans.findIndex(
+          (item) => item.id == response.id
+        );
+        this.ratePlans.splice(foundIndex, 1);
+      });
+  }
 }

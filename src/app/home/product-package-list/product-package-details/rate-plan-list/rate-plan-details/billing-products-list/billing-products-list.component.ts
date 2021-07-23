@@ -38,4 +38,33 @@ export class BillingProductsListComponent implements OnInit {
         this.billingProducts.push(response);
       });
   }
+
+  onEditBillingProductClicked(billingProduct: BillingProduct): void {
+    this.billingProductsListPresenter
+      .onEditBillingProduct(
+        ['name', 'code', 'price'],
+        this.productPackageId,
+        billingProduct
+      )
+      .subscribe((response) => {
+        this.billingProducts = this.billingProducts.map((billingProduct) => {
+          if (billingProduct.id === response.id) {
+            return response;
+          } else {
+            return billingProduct;
+          }
+        });
+      });
+  }
+
+  onDeleteBillingProductClicked(billingProduct: BillingProduct): void {
+    this.billingProductsListPresenter
+      .onDeleteBillingProduct(this.productPackageId, billingProduct)
+      .subscribe((response) => {
+        const foundIndex = this.billingProducts.findIndex(
+          (item) => item.id == response.id
+        );
+        this.billingProducts.splice(foundIndex, 1);
+      });
+  }
 }

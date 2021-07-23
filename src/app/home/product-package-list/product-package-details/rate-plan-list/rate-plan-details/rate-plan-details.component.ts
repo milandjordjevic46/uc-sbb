@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { filter, switchMap } from 'rxjs/operators';
 import { RatePlan } from 'src/app/shared/services/system-cloud.models';
 import {
   RatePlanDetailsPresenter,
@@ -23,6 +23,7 @@ export class RatePlanDetailsComponent implements OnInit {
   productPackageId: string;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private ratePlanDetailsPresenter: RatePlanDetailsPresenter
   ) {
     route.params
@@ -41,4 +42,21 @@ export class RatePlanDetailsComponent implements OnInit {
       });
   }
   ngOnInit(): void {}
+
+  onEditRatePlanClicked(ratePlan: RatePlan): void {
+    this.ratePlanDetailsPresenter
+      .onEditRatePlan(['name', 'code'], ratePlan)
+      .subscribe((response) => {
+        response.billing_products = this.data.billing_products;
+        this.data = response;
+      });
+  }
+
+  onDeleteRatePlanClicked(ratePlan: RatePlan): void {
+    this.ratePlanDetailsPresenter
+      .onDeleteRatePlan(ratePlan)
+      .subscribe((response) => {
+        this.router.navigate(['']);
+      });
+  }
 }

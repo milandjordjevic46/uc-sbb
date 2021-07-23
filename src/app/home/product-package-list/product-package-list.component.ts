@@ -25,12 +25,9 @@ export class ProductPackageListComponent implements OnInit {
     this.productPackageListPresenter
       .getData()
       .pipe(filter((item) => item !== undefined))
-      .subscribe(
-        (response) => {
-          this.data = response;
-        },
-        (error) => {}
-      );
+      .subscribe((response) => {
+        this.data = response;
+      });
   }
 
   ngOnInit(): void {}
@@ -47,5 +44,28 @@ export class ProductPackageListComponent implements OnInit {
       });
   }
 
-  onEditClicked(): void {}
+  onEditClicked(productPackage: ProductPackage): void {
+    this.productPackageListPresenter
+      .onEditProduct(['name', 'code', 'price'], productPackage)
+      .subscribe((response) => {
+        this.data = this.data.map((pp) => {
+          if (pp.id == response.id) {
+            return response;
+          } else {
+            return pp;
+          }
+        });
+      });
+  }
+
+  onDeleteClicked(productPackage: ProductPackage): void {
+    this.productPackageListPresenter
+      .onDeleteProduct(productPackage)
+      .subscribe((response) => {
+        const foundIndex = this.data.findIndex(
+          (item) => item.id == response.id
+        );
+        this.data.splice(foundIndex, 1);
+      });
+  }
 }

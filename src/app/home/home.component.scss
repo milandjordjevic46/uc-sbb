@@ -3,4 +3,6 @@
 .background {
   background-color: $backgroundColor;
   padding: 30px;
+  height: calc(100% - 124px);
+  overflow-x: auto;
 }

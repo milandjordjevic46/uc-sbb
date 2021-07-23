@@ -1,8 +1,9 @@
 <app-loader></app-loader>
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="d-flex justify-content-between">
     <span>UC-SBB</span>
+    <button mat-button routerLink="">HOME</button>
 </mat-toolbar>
 
-<div class="background" style="min-height: calc(100% - 124px);">
+<div class="background">
     <router-outlet></router-outlet>
 </div>

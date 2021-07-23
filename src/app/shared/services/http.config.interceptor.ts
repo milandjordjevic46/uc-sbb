@@ -5,11 +5,8 @@ import {
   HttpHandler,
   HttpEvent,
 } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
-import { first, flatMap, map, tap } from 'rxjs/operators';
-
-import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 import { LoaderService } from './loader.service';
 import { ErrorHandlingService } from './error-handling.service';
 

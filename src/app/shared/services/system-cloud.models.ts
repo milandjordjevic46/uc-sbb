@@ -27,7 +27,7 @@ export interface BillingProduct {
 
 export interface MatDialogCustomConfig {
   title: string;
-  mode: 'edit' | 'create';
+  mode: 'edit' | 'create' | 'delete';
   fields: string[];
   data?: any;
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { MethodsService } from 'src/app/home/services/methods.service';
+import { EditPresenter } from 'src/app/shared/classes/edit.component';
 import {
   BillingProduct,
   EditedCreatedObject,
@@ -13,13 +13,25 @@ export abstract class BillingProductsListPresenter {
     productPackageId: string,
     ratePlanId: string
   ): Observable<BillingProduct>;
+  abstract onEditBillingProduct(
+    fields: string[],
+    productPackageId: string,
+    data: BillingProduct
+  ): Observable<BillingProduct>;
+  abstract onDeleteBillingProduct(
+    productPackageId: string,
+    data: BillingProduct
+  ): Observable<BillingProduct>;
 }
 
 @Injectable()
 export class BillingProductsListPresenterImpl
+  extends EditPresenter
   implements BillingProductsListPresenter
 {
-  constructor(private methodsService: MethodsService) {}
+  constructor(protected methodsService: MethodsService) {
+    super(methodsService);
+  }
 
   addBillingProduct(
     fields: string[],
@@ -32,18 +44,25 @@ export class BillingProductsListPresenterImpl
       '/rate_plan/' +
       ratePlanId +
       '/billing_product';
-    return this.methodsService
-      .add<BillingProduct, EditedCreatedObject>(
-        'Create Billing Product',
-        'create',
-        fields,
-        path
-      )
-      .pipe(
-        map((item) => {
-          item.createdAt = item.createdAt.split('T')[0];
-          return item;
-        })
-      );
+    return this.methodsService.add<BillingProduct, EditedCreatedObject>(
+      'Create Billing Product',
+      fields,
+      path
+    );
+  }
+
+  onEditBillingProduct(
+    fields: string[],
+    productPackageId: string,
+    data: BillingProduct
+  ): Observable<BillingProduct> {
+    return this.editBillingProduct(fields, productPackageId, data);
+  }
+
+  onDeleteBillingProduct(
+    productPackageId: string,
+    data: BillingProduct
+  ): Observable<BillingProduct> {
+    return this.deleteBillingProduct(productPackageId, data);
   }
 }

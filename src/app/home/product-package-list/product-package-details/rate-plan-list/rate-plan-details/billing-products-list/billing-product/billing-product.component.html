@@ -12,11 +12,10 @@
                 <mat-icon>euro</mat-icon>
             </div>
         </div>
-        <div class="mat-card-subtitle mb-0 mt-5">{{billingProduct.createdAt}}</div>
+        <div class="mat-card-subtitle mb-0 mt-5">{{billingProduct.createdAt | date: 'dd-MM-yyy'}}</div>
         <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions class="d-flex justify-content-between">
-        <button color="accent" mat-button>EDIT</button>
         <ng-content></ng-content>
     </mat-card-actions>
 </mat-card>

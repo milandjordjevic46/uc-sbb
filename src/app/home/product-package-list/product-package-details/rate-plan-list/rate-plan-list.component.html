@@ -1,6 +1,14 @@
-<div class="d-flex flex-wrap">
+<div class="content">
     <ng-container *ngFor="let plan of ratePlans">
         <app-rate-plan class="plan" [ratePlan]="plan">
+
+            <button mat-mini-fab (click)="onDeleteRatePlanClicked(plan)" color="accent">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <button mat-mini-fab (click)="onEditRatePlanClicked(plan)" color="accent">
+                <mat-icon>edit</mat-icon>
+            </button>
+
             <button mat-raised-button color="primary" (click)="onRateDetailsClicked(plan.id)">DETAIILS</button>
         </app-rate-plan>
     </ng-container>

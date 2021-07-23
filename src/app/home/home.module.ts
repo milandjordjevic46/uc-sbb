@@ -26,6 +26,7 @@ import { BillingProductComponent } from './product-package-list/product-package-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MethodsService, MethodsServiceImpl } from './services/methods.service';
 import { CreateEditDialogComponent } from './create-edit-dialog/create-edit-dialog.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -39,6 +40,7 @@ import { CreateEditDialogComponent } from './create-edit-dialog/create-edit-dial
     BillingProductsListComponent,
     BillingProductComponent,
     CreateEditDialogComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CommonModule,
