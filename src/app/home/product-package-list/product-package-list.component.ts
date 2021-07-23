@@ -32,6 +32,7 @@ export class ProductPackageListComponent implements OnInit {
         (error) => {}
       );
   }
+
   ngOnInit(): void {}
 
   onDetailsClicked(id: string): void {
@@ -39,7 +40,11 @@ export class ProductPackageListComponent implements OnInit {
   }
 
   onAddClicked(): void {
-    this.productPackageListPresenter.addProduct(this.data[0]);
+    this.productPackageListPresenter
+      .addProduct(['name', 'code', 'price'])
+      .subscribe((response) => {
+        this.data.push(response);
+      });
   }
 
   onEditClicked(): void {}

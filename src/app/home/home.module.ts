@@ -25,7 +25,7 @@ import { BillingProductsListComponent } from './product-package-list/product-pac
 import { BillingProductComponent } from './product-package-list/product-package-details/rate-plan-list/rate-plan-details/billing-products-list/billing-product/billing-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MethodsService, MethodsServiceImpl } from './services/methods.service';
-import { CreateComponent } from './create/create.component';
+import { CreateEditDialogComponent } from './create-edit-dialog/create-edit-dialog.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -38,7 +38,7 @@ import { CreateComponent } from './create/create.component';
     RatePlanDetailsComponent,
     BillingProductsListComponent,
     BillingProductComponent,
-    CreateComponent,
+    CreateEditDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 export abstract class CloudService {
   abstract get<T>(path: string): Observable<T>;
-  abstract create<T>(path: string, data: any): Observable<T>;
+  abstract create<T, D>(path: string, data: D): Observable<T>;
   abstract update<T>(path: string, data: string): Observable<T>;
   abstract delete<T>(path: string): Observable<T>;
 }
@@ -18,7 +18,7 @@ export class CloudServiceImpl implements CloudService {
     return this.http.get<T>(environment.apiUrl + path);
   }
 
-  create<T>(path: string, data: any): Observable<T> {
+  create<T, D>(path: string, data: D): Observable<T> {
     return this.http.post<T>(environment.apiUrl + path, data);
   }
 

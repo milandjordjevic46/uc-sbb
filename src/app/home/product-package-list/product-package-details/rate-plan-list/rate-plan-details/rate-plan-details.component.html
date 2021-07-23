@@ -4,7 +4,8 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="w-75 rates">
-        <app-billing-products-list *ngIf="data && data.billing_products" [billingProducts]="data.billing_products">
+        <app-billing-products-list *ngIf="data && data.billing_products" [productPackageId]="productPackageId"
+            [ratePlanId]="data.id" [billingProducts]="data.billing_products">
         </app-billing-products-list>
     </div>
 </div>

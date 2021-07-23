@@ -20,6 +20,7 @@ import {
 })
 export class RatePlanDetailsComponent implements OnInit {
   data: RatePlan;
+  productPackageId: string;
   constructor(
     private route: ActivatedRoute,
     private ratePlanDetailsPresenter: RatePlanDetailsPresenter
@@ -27,12 +28,13 @@ export class RatePlanDetailsComponent implements OnInit {
     route.params
       .pipe(
         filter((item) => item.productPackageId),
-        switchMap((items: Params) =>
-          ratePlanDetailsPresenter.getDetails(
+        switchMap((items: Params) => {
+          this.productPackageId = items.productPackageId;
+          return ratePlanDetailsPresenter.getDetails(
             items.productPackageId,
             items.ratePlanId
-          )
-        )
+          );
+        })
       )
       .subscribe((response) => {
         this.data = response;

@@ -1,0 +1,17 @@
+<form [formGroup]="createForm" class="d-flex flex-column">
+    <h3>{{data.title}}</h3>
+    <ng-container *ngFor="let item of data.fields">
+        <mat-form-field appearance="standard">
+            <mat-label class="capitalize">{{item}}</mat-label>
+            <input matInput autocomplete="off" [formControlName]="item">
+            <mat-error *ngIf="createForm.get(item).hasError('required')"><span class="capitalize">{{item}}</span> is
+                required
+            </mat-error>
+        </mat-form-field>
+    </ng-container>
+    <div class="d-flex justify-content-between">
+        <button mat-button color="accent" (click)="onCancelClicked()">CANCEL</button>
+        <button mat-raised-button [disabled]="!createForm.valid" (click)="onApplyClicked()"
+            color="primary">APPLY</button>
+    </div>
+</form>

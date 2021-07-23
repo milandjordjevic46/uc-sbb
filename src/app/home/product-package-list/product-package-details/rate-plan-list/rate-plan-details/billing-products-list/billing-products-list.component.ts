@@ -18,8 +18,24 @@ import {
 })
 export class BillingProductsListComponent implements OnInit {
   @Input() billingProducts: BillingProduct[];
+  @Input() productPackageId: string;
+  @Input() ratePlanId: string;
 
-  constructor() {}
+  constructor(
+    private billingProductsListPresenter: BillingProductsListPresenter
+  ) {}
 
   ngOnInit(): void {}
+
+  onAddBillingProductClicked() {
+    this.billingProductsListPresenter
+      .addBillingProduct(
+        ['name', 'code', 'price'],
+        this.productPackageId,
+        this.ratePlanId
+      )
+      .subscribe((response) => {
+        this.billingProducts.push(response);
+      });
+  }
 }

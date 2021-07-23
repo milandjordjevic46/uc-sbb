@@ -24,3 +24,16 @@ export interface BillingProduct {
   name: string;
   createdAt: string;
 }
+
+export interface MatDialogCustomConfig {
+  title: string;
+  mode: 'edit' | 'create';
+  fields: string[];
+  data?: any;
+}
+
+export interface EditedCreatedObject {
+  name: string;
+  code: string;
+  price?: string;
+}

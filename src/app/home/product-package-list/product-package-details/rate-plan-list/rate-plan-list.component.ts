@@ -23,4 +23,12 @@ export class RatePlanListComponent implements OnInit {
   onRateDetailsClicked(id: string): void {
     this.ratePlanListPresenter.goToDetails(this.productPackageId, id);
   }
+
+  onAddRatePlanClicked() {
+    this.ratePlanListPresenter
+      .addRatePlan(['name', 'code'], this.productPackageId)
+      .subscribe((response) => {
+        this.ratePlans.push(response);
+      });
+  }
 }
